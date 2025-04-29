@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #003366;
+    color: white;
+    padding: 10px 20px;
+  }
+  
+  .nav-left .logo {
+    height: 50px;
+  }
+  
+  .nav-right a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .cards {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .card {
+    width: 30%;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  form.webform {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 30px auto;
+  }
+  
+  form.webform label {
+    margin-top: 10px;
+  }
+  
+  form.webform input,
+  form.webform select,
+  form.webform textarea,
+  form.webform button {
+    padding: 8px;
+    margin-top: 5px;
+  }
+  
