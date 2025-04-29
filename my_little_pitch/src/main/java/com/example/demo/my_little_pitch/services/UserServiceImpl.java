@@ -27,8 +27,4 @@ public class UserServiceImpl implements UserService {
         userDao.saveOrUpdate(user);
     }
 
-    //@Transactional
-    //@Override
-    //public void withdraw(Integer id, Integer customerId, double amount)
-    //}
 }
