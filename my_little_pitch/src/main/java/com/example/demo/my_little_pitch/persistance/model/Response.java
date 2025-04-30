@@ -9,7 +9,6 @@ public class Response extends AbstractModel{
 
         private String rating;
         private String response;
-
         private Integer userId;
 
     public Integer getUserId() {

@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="my_little_pitch:war exploded">
-    <output-path>$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT</output-path>
+    <output-path>$PROJECT_DIR$/target/tldr</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
@@ -175,7 +175,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/tldr/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="my_little_pitch/web/Web" />
     </root>
