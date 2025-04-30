@@ -5,20 +5,20 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class Response {
+public class Response extends AbstractModel{
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+        private Integer id;
         private String date;
         private String rating;
         private String response;
 
 
-        public void setId(Long id) {
+        public void setId(Integer id) {
             this.id = id;
         }
 
-        public Long getId() {
+        public Integer getId() {
             return id;
         }
 
