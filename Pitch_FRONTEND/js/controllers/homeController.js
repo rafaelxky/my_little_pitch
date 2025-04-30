@@ -27,5 +27,11 @@ export function homeController() {
       document.getElementById("app").appendChild(info);
     });
   });
+
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
 }
 

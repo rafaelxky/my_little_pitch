@@ -145,8 +145,8 @@ main {
 /* Container de Cards */
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajuste para ocupar mais espaço */
-  gap: 30px; /* Menos espaço entre os cards */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
   padding: 50px;
   max-width: 1200px;
   margin: 0 auto;
@@ -156,14 +156,57 @@ main {
 
 /* Card */
 .card {
-  position: relative;
+  position: relative; /* Necessário para o efeito neon */
+  height: 420px;
   background-color: var(--pure-white);
   border: 1px solid var(--shadow-color);
   border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 8px 15px var(--shadow-color);
   overflow: hidden;
-  height: 400px; /* Tamanho fixo para os cards */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Neon animado atrás do card */
+.card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg,
+    #00f0ff,
+    #ff00e0,
+    #00f0ff,
+    #ff00e0
+  );
+  background-size: 400% 400%;
+  border-radius: 14px;
+  filter: blur(10px);
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+  animation: neonGlow 5s linear infinite;
+  animation-play-state: paused;
+}
+
+.card:hover::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+@keyframes neonGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .card:hover {
@@ -172,26 +215,7 @@ main {
   cursor: pointer;
 }
 
-/* Neon animado atrás do card */
-.card::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, var(--electric-cyan), transparent 70%);
-  animation: neonMove 4s linear infinite;
-  z-index: 0;
-  opacity: 0.15;
-}
-
-@keyframes neonMove {
-  0% { transform: rotate(0deg) translateX(0); }
-  100% { transform: rotate(360deg) translateX(0); }
-}
-
-/* Parte interna do card */
+/* Parte interna */
 .card-inner {
   width: 100%;
   height: 100%;
@@ -199,13 +223,10 @@ main {
   transform-style: preserve-3d;
   border-radius: 12px;
   overflow: hidden;
+  position: relative;
 }
 
-.card:hover .card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Frente e verso do card */
+/* Frente e verso */
 .card-front,
 .card-back {
   position: absolute;
@@ -224,10 +245,17 @@ main {
 
 .card-front {
   background-color: var(--graphite-gray);
+  z-index: 2;
 }
 
 .card-back {
   background-color: var(--blue-cobalt);
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* Virar card por clique */
+.card.flipped .card-inner {
   transform: rotateY(180deg);
 }
 
@@ -237,20 +265,12 @@ main {
   text-transform: uppercase;
 }
 
-/* Espaço para a imagem */
-.card .image {
+/* Imagem no Card */
+.card img {
   width: 100%;
-  height: 100%;
-  background-color: #ccc; /* Placeholder de cor */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.card .image img {
-  width: 80%;
-  height: 80%;
+  height: 200px;
   object-fit: cover;
+  border-radius: 12px 12px 0 0;
 }
 
 /* Formulário */
@@ -387,4 +407,24 @@ main {
     font-size: 1.2rem;
     padding: 20px;
   }
+}
+
+/* Hover genérico */
+.hoverable {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hoverable:hover {
+  background-color: var(--electric-cyan);
+  color: var(--pure-white);
+}
+
+/* Animação fade */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
 }
