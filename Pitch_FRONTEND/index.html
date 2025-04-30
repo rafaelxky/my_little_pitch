@@ -7,18 +7,33 @@
   <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
-  <nav>
-    <div class="nav-left">
-      <img src="./assets/logo.png" alt="Logo" class="logo" />
+  <div class="wrapper">
+    <nav>
+      <div class="nav-left">
+        <img src="./assets/topbar_bw.png" alt="Logo" class="logo" />
+      </div>
+      <div class="nav-right">
+        <a href="/" data-link>Home</a>
+        <a href="/webform" data-link>WebForm</a>
+        <a href="/dashboard" data-link>Dashboard</a>
+      </div>
+    </nav>
+    
+    <main id="app"></main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      Developed by: Marcelo Silva, Mónica Guilherme, Rafael Penacho and Ricardo Veloso
     </div>
-    <div class="nav-right">
-      <a href="/" data-link>Home</a>
-      <a href="/webform" data-link>WebForm</a>
-      <a href="/dashboard" data-link>Dashboard</a>
+    <div class="footer-center">
+      &copy; 2025 TLDR. All rights reserved.
     </div>
-  </nav>
-  <main id="app"></main>
+    <div class="footer-right">
+      KERNELFC 2025
+    </div>
+  </footer>
+
   <script type="module" src="./js/app.js"></script>
 </body>
 </html>
-
