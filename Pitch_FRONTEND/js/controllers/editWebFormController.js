@@ -1,12 +1,16 @@
-import { webformView } from '../views/webformView.js';
+import { editWebformView } from '../views/editWebFormView.js';
 
-export function webformController() {
-  document.getElementById('app').innerHTML = webformView();
+export function editWebFormController() {
+  editForm();
+}
 
-  const form = document.querySelector('.webform');
+function editForm() {
+  document.getElementById('app').innerHTML = editWebformView();
 
-  // Verifica se é edição e pré-carrega os dados no formulário
+  const form = document.querySelector('.editform');
   const editIndex = localStorage.getItem("editIndex");
+
+  // Carrega dados no formulário se em modo de edição
   if (editIndex !== null) {
     const submissions = JSON.parse(localStorage.getItem("submissions")) || [];
     const submission = submissions[editIndex];
@@ -30,27 +34,21 @@ export function webformController() {
       role: document.getElementById('role').value,
       projectName: document.getElementById('projectName').value,
       summary: document.getElementById('summary').value,
-      fileName: document.getElementById('file').files[0]?.name || null,
+      fileName: document.getElementById('newfile').files[0]?.name || null,
       status: "Pendente",
     };
 
     const submissions = JSON.parse(localStorage.getItem("submissions")) || [];
-    const editIndex = localStorage.getItem("editIndex");
 
     if (editIndex !== null) {
-      // ✏️ Atualiza submissão existente
       submissions[editIndex] = { ...submissions[editIndex], ...submission };
+      localStorage.setItem("submissions", JSON.stringify(submissions));
       localStorage.removeItem("editIndex");
-    } else {
-      // ➕ Nova submissão
-      submissions.push(submission);
+
+      alert("Submissão atualizada com sucesso!");
+
+      window.history.pushState(null, null, "/dashboard");
+      window.dispatchEvent(new PopStateEvent("popstate"));
     }
-
-    localStorage.setItem("submissions", JSON.stringify(submissions));
-    alert("New Submission Saved");
-
-    // 🔁 Redireciona para o dashboard
-    window.history.pushState(null, null, "/dashboard");
-    window.dispatchEvent(new PopStateEvent("popstate"));
   });
 }

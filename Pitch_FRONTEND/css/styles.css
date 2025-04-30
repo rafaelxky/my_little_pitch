@@ -109,7 +109,7 @@ nav {
 }
 
 .webform label {
-  margin-top: 10px;
+  margin-top: 20px;
   font-weight: bold;
 }
 
@@ -118,7 +118,7 @@ nav {
 .webform textarea,
 .webform button {
   padding: 10px;
-  margin-top: 5px;
+  margin-top: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -133,6 +133,18 @@ nav {
 .webform button:hover {
   background-color: #002244;
 }
+
+.submission-details {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
 
 /* Dashboard */
 .dashboard-table {
@@ -160,7 +172,7 @@ nav {
 
 .dashboard-table button {
   padding: 6px 10px;
-  background-color: #ff6600;
+  background-color: rgb(0, 102, 170);
   border: none;
   border-radius: 5px;
   color: white;
@@ -169,10 +181,14 @@ nav {
 }
 
 .dashboard-table button:hover {
-  background-color: #cc5500;
+  background-color: #06B6D4;
 }
 
-/* Responsividade */
+.active-row{
+  background-color: #d4edda;
+}
+
+/* Responsividade nav e Carrocel*/
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
@@ -205,5 +221,76 @@ nav {
     font-size: 0.9rem;
   }
 }
+
+/* Edition Form */
+
+.editform {
+    max-width: 600px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .editform label {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+  .editform input,
+  .editform select,
+  .editform textarea,
+  .editform button {
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .editform button {
+    background-color: #003366;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .editform button:hover {
+    background-color: #002244;
+  }
+  
+  .submission-details {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 0.95em;
+    line-height: 1.5;
+  }
+ 
+  /* Proposal*/
+
+  .proposal-construction {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .construction-box {
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 2px dashed #aaa;
+    border-radius: 8px;
+    max-width: 600px;
+    background-color: #f9f9f9;
+  }
+  
+
+
+
+
 
 
