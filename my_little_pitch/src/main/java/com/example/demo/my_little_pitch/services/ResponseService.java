@@ -12,4 +12,6 @@ public interface ResponseService {
     Response saveOrUpdate(Response response);
 
     List<Response> list();
+
+    List<Response> getByUserId(Integer id);
 }

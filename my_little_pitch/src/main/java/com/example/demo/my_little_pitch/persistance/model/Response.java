@@ -11,8 +11,17 @@ public class Response extends AbstractModel{
         private String rating;
         private String response;
 
+        private Integer userId;
 
-        public String getDate() {
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getDate() {
             return date;
         }
 

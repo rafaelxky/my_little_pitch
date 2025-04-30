@@ -34,5 +34,9 @@ public class ResponseServiceImpl implements ResponseService{
         return responseJpaDao.findAll();
     }
 
+    @Override
+    public List<Response> getByUserId(Integer id){
+        return responseJpaDao.getByUserId(id);
+    }
 
 }

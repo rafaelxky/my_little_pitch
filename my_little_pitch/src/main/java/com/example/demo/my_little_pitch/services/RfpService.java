@@ -13,4 +13,6 @@ public interface RfpService {
     void saveOrUpdate(Rfp rfp);
 
     List<Rfp> list();
+
+    List<Rfp> getByUserId(Integer id);
 }

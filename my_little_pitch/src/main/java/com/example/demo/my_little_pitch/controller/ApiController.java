@@ -39,13 +39,17 @@ public class ApiController{
         return userService.get(id);
     }
 
+    @GetMapping("/user/{id}/rfp")
+    public List<Rfp> getUserRfp(@PathVariable Integer id){
+        return rfpService.getByUserId(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST, path = {"/user/form"})
     public User addUser(@Valid @ModelAttribute("user") User user){
         // receives the user form data as a POST request
         User savedUser = userService.saveOrUpdate(user);
         return savedUser;
     }
-
 
     @GetMapping("/response")
     public List<Response> listResponse(){
@@ -61,7 +65,6 @@ public class ApiController{
     public Response addResponse(@Valid @ModelAttribute("response") Response response){
         return responseService.saveOrUpdate(response);
     }
-
 
     // working
     // add validation
@@ -82,11 +85,5 @@ public class ApiController{
         // receives the Rfp form data as a POST requests
         return rfp;
     }
-
-
-
-
-
-
 
 }

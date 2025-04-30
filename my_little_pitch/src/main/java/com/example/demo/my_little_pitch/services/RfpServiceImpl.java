@@ -33,4 +33,9 @@ public class RfpServiceImpl implements RfpService{
         return rfpJpaDao.findAll();
     }
 
+    @Override
+    public List<Rfp> getByUserId(Integer id){
+        return rfpJpaDao.getByUserId(id);
+    }
+
 }

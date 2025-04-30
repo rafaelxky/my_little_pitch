@@ -10,7 +10,15 @@ public class Rfp extends AbstractModel {
     private String text;
     private String tokens;
 
+    private Integer userId;
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public String getDate() {
         return date;
