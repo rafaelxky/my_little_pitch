@@ -3,16 +3,16 @@ import { webformController } from './controllers/webformController.js';
 import { dashboardController } from './controllers/dashboardController.js';
 
 export function router() {
-  const path = window.location.pathname;
-
-  switch (path) {
-    case "/":
+  const hash = window.location.hash || "#/";
+  
+  switch (hash) {
+    case "#/":
       homeController();
       break;
-    case "/webform":
+    case "#/webform":
       webformController();
       break;
-    case "/dashboard":
+    case "#/dashboard":
       dashboardController();
       break;
     default:
@@ -20,4 +20,3 @@ export function router() {
         "<h1>404 - Página não encontrada</h1>";
   }
 }
-

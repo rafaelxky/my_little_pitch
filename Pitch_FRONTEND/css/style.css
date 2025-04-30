@@ -18,14 +18,24 @@
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
   background-color: var(--light-gray);
+  color: var(--graphite-gray);
+}
+
+/* Wrapper de layout */
+.page-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  color: var(--graphite-gray);
 }
 
 /* Navbar */
@@ -144,133 +154,76 @@ main {
 
 /* Container de Cards */
 .cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 50px;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding: 40px;
 }
 
 /* Card */
 .card {
-  position: relative; /* Necessário para o efeito neon */
-  height: 420px;
-  background-color: var(--pure-white);
-  border: 1px solid var(--shadow-color);
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 8px 15px var(--shadow-color);
+  width: 380px;
+  height: 500px;
+  background: black;
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  color: white;
+  padding: 3em;
+  border: 2px solid transparent;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
-/* Neon animado atrás do card */
 .card::before {
-  content: "";
+  content: '';
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg,
-    #00f0ff,
-    #ff00e0,
-    #00f0ff,
-    #ff00e0
-  );
-  background-size: 400% 400%;
-  border-radius: 14px;
-  filter: blur(10px);
-  opacity: 0;
-  z-index: 0;
-  transition: opacity 0.3s ease;
-  animation: neonGlow 5s linear infinite;
-  animation-play-state: paused;
-}
-
-.card:hover::before {
-  opacity: 1;
-  animation-play-state: running;
-}
-
-@keyframes neonGlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  border: 4px solid #00f0ff;
+  z-index: -1;
+  animation: border-animation 3s linear infinite;
 }
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }
 
-/* Parte interna */
-.card-inner {
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Frente e verso */
-.card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-  font-size: 1.3rem;
-  color: var(--pure-white);
-  text-align: center;
-}
-
-.card-front {
-  background-color: var(--graphite-gray);
-  z-index: 2;
-}
-
-.card-back {
-  background-color: var(--blue-cobalt);
-  transform: rotateY(180deg);
-  z-index: 1;
-}
-
-/* Virar card por clique */
-.card.flipped .card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Títulos */
-.card-front h3 {
-  font-size: 1.5rem;
-  text-transform: uppercase;
-}
-
-/* Imagem no Card */
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 12px 12px 0 0;
+@keyframes border-animation {
+  0% {
+    border-top: 4px solid #00f0ff;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid transparent;
+  }
+  25% {
+    border-top: 4px solid transparent;
+    border-right: 4px solid #00f0ff;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid transparent;
+  }
+  50% {
+    border-top: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid #00f0ff;
+    border-left: 4px solid transparent;
+  }
+  75% {
+    border-top: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid #00f0ff;
+  }
+  100% {
+    border-top: 4px solid #00f0ff;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid transparent;
+  }
 }
 
 /* Formulário */
@@ -310,6 +263,26 @@ main {
 
 .webform button:hover {
   background-color: var(--electric-cyan);
+}
+
+/* Project Brief */
+.brief-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  position: relative;
+}
+
+#summary::placeholder {
+  color: #aaa; /* cinza claro */
+  font-style: italic;
+}
+
+#char-count {
+  font-size: 0.85rem;
+  color: #888;
+  align-self: flex-end;
+  margin-top: 5px;
 }
 
 /* Dashboard */

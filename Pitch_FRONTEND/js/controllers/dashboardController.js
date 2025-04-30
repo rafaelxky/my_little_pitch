@@ -6,19 +6,15 @@ export function dashboardController() {
 }
 
 function loadDashboardData() {
-  const data = [
-    { id: 1, dateTime: "2025-04-29 22:30", status: "Pendente" },
-    { id: 2, dateTime: "2025-04-29 22:45", status: "Em andamento" },
-    { id: 3, dateTime: "2025-04-29 23:00", status: "Concluído" }
-  ];
+  const submissions = JSON.parse(localStorage.getItem("submissions")) || [];
   
   const tbody = document.getElementById("dashboard-body");
-  tbody.innerHTML = data.map(item => `
+  tbody.innerHTML = submissions.map((item, index) => `
     <tr>
-      <td>${item.id}</td>
+      <td>${index + 1}</td>
       <td>${item.dateTime}</td>
       <td>${item.status}</td>
-      <td><button onclick="reavaliar(${item.id})">Reavaliar</button></td>
+      <td><button onclick="reavaliar(${index})">Reavaliar</button></td>
     </tr>
   `).join('');
 }
