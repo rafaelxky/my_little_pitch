@@ -134,6 +134,18 @@ nav {
   background-color: #002244;
 }
 
+.submission-details {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+
 /* Dashboard */
 .dashboard-table {
   width: 90%;
@@ -205,5 +217,7 @@ nav {
     font-size: 0.9rem;
   }
 }
+
+
 
 

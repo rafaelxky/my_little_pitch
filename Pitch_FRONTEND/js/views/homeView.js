@@ -5,7 +5,7 @@ export function homeView() {
         <div class="slide">
           <img src="./assets/image1.webp" alt="Bem-vindo" />
           <div class="text">
-            <h2>Bem-vindo à TLDR</h2>
+            <h2>Welcome to TLDR</h2>
             <p> Onde até as grandes ideias cabem num simples formulário!</p>
             <p> Seja qual for o teu percurso — génio do código, inventor de garagem ou simplesmente alguém com uma faísca de inspiração — esta página é para ti.
                 Aqui podes submeter os teus projetos, ideias ou visões inovadoras, porque acreditamos que todas as contribuições têm valor, independentemente do teu background.</p>
@@ -14,16 +14,16 @@ export function homeView() {
           </div>
         </div>
         <div class="slide">
-          <img src="./assets/image2.png" alt="Quem somos" />
+          <img src="./assets/image2.png" alt="About Us" />
           <div class="text">
-            <h2>Quem somos</h2>
+            <h2>About Us</h2>
             <p>Somos especialistas em soluções digitais.</p>
           </div>
         </div>
         <div class="slide">
-          <img src="./assets/image3.png" alt="O que fazemos" />
+          <img src="./assets/image3.png" alt="What we do" />
           <div class="text">
-            <h2>O que fazemos</h2>
+            <h2>What We Do</h2>
             <p>Criamos experiências web incríveis.</p>
             <a href="/webform" data-link class="explore-button">Explorar</a>
           </div>
