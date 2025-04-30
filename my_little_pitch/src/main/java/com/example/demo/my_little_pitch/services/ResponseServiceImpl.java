@@ -25,8 +25,8 @@ public class ResponseServiceImpl implements ResponseService{
 
     @Override
     @Transactional
-    public void saveOrUpdate(Response response){
-        responseJpaDao.saveOrUpdate(response);
+    public Response saveOrUpdate(Response response){
+        return responseJpaDao.saveOrUpdate(response);
     }
 
     @Override

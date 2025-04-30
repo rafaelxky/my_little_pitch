@@ -9,7 +9,7 @@ public interface ResponseService {
     abstract Response get(Integer id);
 
     @Transactional
-    void saveOrUpdate(Response response);
+    Response saveOrUpdate(Response response);
 
     List<Response> list();
 }
