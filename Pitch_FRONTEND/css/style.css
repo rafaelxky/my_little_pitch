@@ -1,13 +1,14 @@
 /* Paleta de Cores */
 :root {
-  --blue-cobalt: #243B55; /* Azul profundo para sofisticação */
-  --electric-cyan: #00C4CC; /* Ciano vibrante para destaque */
-  --graphite-gray: #3A3A3A; /* Cinza escuro elegante */
-  --light-gray: #FAFAFA; /* Cinza claro suave para fundo */
+  --blue-cobalt: #243B55;
+  --electric-cyan: #00C4CC;
+  --graphite-gray: #3A3A3A;
+  --light-gray: #FAFAFA;
   --pure-white: #FFFFFF;
-  --dark-gray: #222222; /* Cinza escuro otimizado */
-  --accent-orange: #FF8C42; /* Laranja sutil para calor */
-  --shadow-color: rgba(0, 0, 0, 0.15); /* Sombras suaves para profundidade */
+  --dark-gray: #222222;
+  --accent-orange: #FF8C42;
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  --highlight-yellow: #FFEB3B;
 }
 
 /* Base e body */
@@ -18,7 +19,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif; /* Fonte moderna e legível */
+  font-family: 'Roboto', sans-serif;
   line-height: 1.6;
   background-color: var(--light-gray);
   display: flex;
@@ -41,6 +42,11 @@ nav {
   align-items: center;
   box-shadow: 0 4px 6px var(--shadow-color);
   z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+nav:hover {
+  background-color: var(--dark-gray);
 }
 
 .nav-left {
@@ -139,8 +145,8 @@ main {
 /* Container de Cards */
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajuste para ocupar mais espaço */
+  gap: 30px; /* Menos espaço entre os cards */
   padding: 50px;
   max-width: 1200px;
   margin: 0 auto;
@@ -150,12 +156,14 @@ main {
 
 /* Card */
 .card {
-  height: 420px;
+  position: relative;
   background-color: var(--pure-white);
   border: 1px solid var(--shadow-color);
   border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 8px 15px var(--shadow-color);
+  overflow: hidden;
+  height: 400px; /* Tamanho fixo para os cards */
 }
 
 .card:hover {
@@ -164,7 +172,26 @@ main {
   cursor: pointer;
 }
 
-/* Parte interna */
+/* Neon animado atrás do card */
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, var(--electric-cyan), transparent 70%);
+  animation: neonMove 4s linear infinite;
+  z-index: 0;
+  opacity: 0.15;
+}
+
+@keyframes neonMove {
+  0% { transform: rotate(0deg) translateX(0); }
+  100% { transform: rotate(360deg) translateX(0); }
+}
+
+/* Parte interna do card */
 .card-inner {
   width: 100%;
   height: 100%;
@@ -178,7 +205,7 @@ main {
   transform: rotateY(180deg);
 }
 
-/* Frente e verso */
+/* Frente e verso do card */
 .card-front,
 .card-back {
   position: absolute;
@@ -208,6 +235,22 @@ main {
 .card-front h3 {
   font-size: 1.5rem;
   text-transform: uppercase;
+}
+
+/* Espaço para a imagem */
+.card .image {
+  width: 100%;
+  height: 100%;
+  background-color: #ccc; /* Placeholder de cor */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card .image img {
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
 }
 
 /* Formulário */
@@ -242,6 +285,7 @@ main {
   color: var(--pure-white);
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .webform button:hover {
@@ -279,6 +323,7 @@ main {
   color: var(--pure-white);
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .dashboard-table button:hover {
