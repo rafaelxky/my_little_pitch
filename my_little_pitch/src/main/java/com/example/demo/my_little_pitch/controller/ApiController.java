@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class ApiController{
-    // update as is needed
+
 
     @Autowired
     private ResponseService responseService;
@@ -26,8 +26,6 @@ public class ApiController{
     @Autowired
     private RfpService rfpService;
 
-    // its creating a response by itself
-    // working but not the id
 
     @GetMapping("/user")
     public List<User> listUsers(){
@@ -49,12 +47,30 @@ public class ApiController{
         return responseService.getByUserId(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = {"/user/form"})
+    @RequestMapping(method = RequestMethod.POST, path = {"/user/add"})
     public User addUser(@Valid @ModelAttribute("user") User user){
-        // receives the user form data as a POST request
+
+        if (user.getId() != null && userService.get(user.getId()) != null) {
+            System.out.println("cant pass an Id to create an user");
+            return null;
+        }
+
         User savedUser = userService.saveOrUpdate(user);
         return savedUser;
     }
+
+    @RequestMapping(method = RequestMethod.POST, path = {"/user/update"})
+    public User updateUser(@Valid @ModelAttribute("user") User user){
+
+        if (user.getId() != null && userService.get(user.getId()) != null) {
+            user.setVersion(userService.get(user.getId()).getVersion());
+            return userService.saveOrUpdate(user);
+        }
+
+        System.out.println("cant update, that user doesnt exist");
+        return null;
+    }
+
 
     @GetMapping("/response")
     public List<Response> listResponse(){
@@ -62,17 +78,33 @@ public class ApiController{
     }
     @GetMapping("/response/{responseId}")
     public Response getResponse(@PathVariable Integer responseId){
-        // return specific response based on id
+
         return responseService.get(responseId);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = {"/response/form"})
+    @RequestMapping(method = RequestMethod.POST, path = {"/response/add"})
     public Response addResponse(@Valid @ModelAttribute("response") Response response){
+
+        if (response.getId() != null && responseService.get(response.getId()) != null){
+            System.out.println("You cant pass an Id to add a response");
+            return null;
+        }
+
         return responseService.saveOrUpdate(response);
     }
 
-    // working
-    // add validation
+    @RequestMapping(method = RequestMethod.POST, path = {"/response/update"})
+    public Response updateResponse(@Valid @ModelAttribute("response") Response response){
+
+        if (response.getId() != null && responseService.get(response.getId()) != null){
+            response.setVersion(responseService.get(response.getId()).getVersion());
+            return responseService.saveOrUpdate(response);
+        }
+
+        System.out.println("cant update this response doesnt exists");
+        return null;
+    }
+
     @GetMapping("/rfp")
     public List<Rfp> listRfp(){
         return rfpService.list();
@@ -80,15 +112,29 @@ public class ApiController{
     @GetMapping("/rfp/{rfpId}")
     public Rfp getRfp(@PathVariable Integer rfpId){
         return rfpService.get(rfpId);
-        // return specific response based on id
+
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = {"/rfp/form"})
+    @RequestMapping(method = RequestMethod.POST, path = {"/rfp/add"})
     public Rfp addRfp(@Valid @ModelAttribute("rfp") Rfp rfp){
+        if (rfp.getId() != null && rfpService.get(rfp.getId()) != null){
+            System.out.println("You cant pass an Id to create a rfp");
+           return null;
+        }
 
         rfpService.saveOrUpdate(rfp);
-        // receives the Rfp form data as a POST requests
         return rfp;
     }
 
+    @RequestMapping(method = RequestMethod.POST, path = {"/rfp/update"})
+    public Rfp updateRfp(@Valid @ModelAttribute("rfp") Rfp rfp){
+        if (rfp.getId() != null && rfpService.get(rfp.getId()) != null){
+            rfp.setVersion(rfpService.get(rfp.getId()).getVersion());
+            rfpService.saveOrUpdate(rfp);
+            return rfp;
+        }
+
+        System.out.println("cant update, this rfp doesnt exist");
+        return null;
+    }
 }

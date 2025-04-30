@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 @Table(name = "responses")
 public class Response extends AbstractModel{
 
-        private String date;
         private String rating;
         private String response;
 
@@ -20,14 +19,6 @@ public class Response extends AbstractModel{
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
-
-    public String getDate() {
-            return date;
-        }
-
-        public void setDate(String date) {
-            this.date = date;
-        }
 
         public String getRating() {
             return rating;
