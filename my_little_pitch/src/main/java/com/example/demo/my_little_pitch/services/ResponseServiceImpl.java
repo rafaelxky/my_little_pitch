@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class ResponseServiceImpl implements ResponseService{
+    // update as its needed
     private ResponseJpaDao responseJpaDao;
 
     @Autowired
@@ -22,7 +25,18 @@ public class ResponseServiceImpl implements ResponseService{
 
     @Override
     @Transactional
-    public void saveOrUpdate(Response response){
-        responseJpaDao.saveOrUpdate(response);
+    public Response saveOrUpdate(Response response){
+        return responseJpaDao.saveOrUpdate(response);
     }
+
+    @Override
+    public List<Response> list(){
+        return responseJpaDao.findAll();
+    }
+
+    @Override
+    public List<Response> getByUserId(Integer id){
+        return responseJpaDao.getByUserId(id);
+    }
+
 }

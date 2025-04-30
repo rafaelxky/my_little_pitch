@@ -76,6 +76,8 @@
 	</dependencyManagement>
 
 	<build>
+
+		<finalName>tldr</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
