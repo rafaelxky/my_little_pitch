@@ -44,6 +44,11 @@ public class ApiController{
         return rfpService.getByUserId(id);
     }
 
+    @GetMapping("/user/{id}/response")
+    public List<Response> getUserResponse(@PathVariable Integer id){
+        return responseService.getByUserId(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST, path = {"/user/form"})
     public User addUser(@Valid @ModelAttribute("user") User user){
         // receives the user form data as a POST request
