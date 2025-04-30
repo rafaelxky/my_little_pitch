@@ -235,29 +235,29 @@ nav {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
   
-  .webform label {
+  .editform label {
     margin-top: 20px;
     font-weight: bold;
   }
   
-  .webform input,
-  .webform select,
-  .webform textarea,
-  .webform button {
+  .editform input,
+  .editform select,
+  .editform textarea,
+  .editform button {
     padding: 10px;
     margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
   
-  .webform button {
+  .editform button {
     background-color: #003366;
     color: white;
     font-weight: bold;
     cursor: pointer;
   }
   
-  .webform button:hover {
+  .editform button:hover {
     background-color: #002244;
   }
   
@@ -270,6 +270,22 @@ nav {
     border-radius: 10px;
     font-size: 0.95em;
     line-height: 1.5;
+  }
+ 
+  /* Proposal*/
+
+  .proposal-construction {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .construction-box {
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 2px dashed #aaa;
+    border-radius: 8px;
+    max-width: 600px;
+    background-color: #f9f9f9;
   }
   
 

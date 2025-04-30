@@ -5,7 +5,7 @@ export function webformController() {
 
   const form = document.querySelector('.webform');
 
-  // 🔄 Verifica se é edição e pré-carrega os dados no formulário
+  // Verifica se é edição e pré-carrega os dados no formulário
   const editIndex = localStorage.getItem("editIndex");
   if (editIndex !== null) {
     const submissions = JSON.parse(localStorage.getItem("submissions")) || [];

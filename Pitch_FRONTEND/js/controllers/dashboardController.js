@@ -14,7 +14,7 @@ function loadDashboardData() {
       <td>${index + 1}</td>
       <td class="project-name" style="cursor:pointer;">${item.projectName}</td>
       <td>${item.status}</td>
-      <td><button onclick="editForm(${index})">Edit Form</button></td>
+      <td><button onclick="review(${index})">Review Proposal</button></td>
     </tr>
   `).join('');
 
@@ -53,6 +53,7 @@ function showSubmissionDetails(index) {
     <button id="delete-form">Delete Form</button>
   `;
 
+  // Delete Submission
   document.getElementById("delete-form").addEventListener("click", () => {
     const submissions = JSON.parse(localStorage.getItem("submissions")) || [];
     if (confirm("Tens a certeza que queres apagar esta submissão?")) {
@@ -65,17 +66,23 @@ function showSubmissionDetails(index) {
   });
 }
 
-// ✅ Correção: garantir que esta função está definida no `window`
+// Garantir que esta função está definida no `window`
 window.editForm = function(index) {
   localStorage.setItem("editIndex", index);
   window.history.pushState(null, null, "/editform");
   window.dispatchEvent(new PopStateEvent("popstate"));
 };
 
+
+// Redireciona para a /proposal - página de revisão da proposta
 window.review = function (index) {
-  alert(`Review Proposal #${index + 1}`);
+  localStorage.setItem("reviewIndex", index); // Guarda o índice para uso futuro
+  window.history.pushState(null, null, "/proposal");
+  window.dispatchEvent(new PopStateEvent("popstate"));
 };
 
+
+// Download de um documento
 window.download = function (index) {
   const submissions = JSON.parse(localStorage.getItem("submissions")) || [];
   const fileName = submissions[index]?.fileName;
