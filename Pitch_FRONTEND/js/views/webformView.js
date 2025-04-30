@@ -25,6 +25,9 @@ export function webformView() {
       <label for="role">Role:</label>
       <input type="text" id="role" required />
 
+      <label for="projectName">Project Name:</label>
+      <input type="text" id="projectName" required />
+
       <label for="summary">Project Summary:</label>
       <textarea id="summary" rows="4" required></textarea>
 
