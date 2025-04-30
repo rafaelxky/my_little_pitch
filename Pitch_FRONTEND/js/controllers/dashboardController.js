@@ -1,4 +1,5 @@
 import { dashboardView } from "../views/dashboardView.js";
+import { rfpService } from "../model/persistance/set.js";
 
 export function dashboardController() {
   document.getElementById("app").innerHTML = dashboardView();
@@ -6,7 +7,8 @@ export function dashboardController() {
 }
 
 function loadDashboardData() {
-  const storedSubmissions = JSON.parse(localStorage.getItem("submissions")) || [];
+  //const storedSubmissions = JSON.parse(localStorage.getItem("submissions")) || [];
+  const storedSubmissions = JSON.parse(rfpService.list()) || [];
   const tbody = document.getElementById("dashboard-body");
 
   tbody.innerHTML = storedSubmissions.map((item, index) => `
@@ -34,6 +36,7 @@ function addProjectNameClickListener() {
     });
   });
 }
+
 
 function showSubmissionDetails(index) {
   const submissions = JSON.parse(localStorage.getItem("submissions")) || [];

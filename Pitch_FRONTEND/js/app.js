@@ -1,5 +1,6 @@
 import { router } from './router.js';
-
+console.log("----------------")
+console.log("app.js")
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", (e) => {
     if (e.target.matches("[data-link]")) {

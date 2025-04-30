@@ -1,4 +1,5 @@
 import { editWebformView } from '../views/editWebFormView.js';
+import { returnNewSubmission } from './controllerUtil.js';
 
 export function editWebFormController() {
   editForm();
@@ -11,10 +12,12 @@ function editForm() {
   const editIndex = localStorage.getItem("editIndex");
 
   // Carrega dados no formulário se em modo de edição
-  if (editIndex !== null) {
+    console.log("index !== null")
     const submissions = JSON.parse(localStorage.getItem("submissions")) || [];
     const submission = submissions[editIndex];
+
     if (submission) {
+      console.log("submission true");
       document.getElementById('name').value = submission.name;
       document.getElementById('company').value = submission.company;
       document.getElementById('sector').value = submission.sector;
@@ -22,21 +25,20 @@ function editForm() {
       document.getElementById('projectName').value = submission.projectName;
       document.getElementById('summary').value = submission.summary;
     }
-  }
+
+  // if (update){
+  // https://api/user/update
+  // Post: 
+  //  return
+  // }
+  // https://api/user/add
+  // Post:
+
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const submission = {
-      name: document.getElementById('name').value,
-      company: document.getElementById('company').value,
-      sector: document.getElementById('sector').value,
-      role: document.getElementById('role').value,
-      projectName: document.getElementById('projectName').value,
-      summary: document.getElementById('summary').value,
-      fileName: document.getElementById('newfile').files[0]?.name || null,
-      status: "Pendente",
-    };
+    const submission = returnNewSubmission;
 
     const submissions = JSON.parse(localStorage.getItem("submissions")) || [];
 

@@ -3,6 +3,8 @@ import { webformController } from './controllers/webformController.js';
 import { dashboardController } from './controllers/dashboardController.js';
 import { proposalController } from './controllers/proposalController.js';
 import { editWebFormController } from './controllers/editWebFormController.js';
+console.log("---------------")
+console.log("router.js")
 
 export function router() {
   const path = window.location.pathname;
