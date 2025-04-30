@@ -11,7 +11,7 @@ export class UserLocalService {
   }
 
   // Add a new user
-  addUser(user) {
+  add(user) {
     const userKey = `user_${user.id}`;  // Use user ID as the key
     if (localStorage.getItem(userKey)) {
       console.log(`User with ID ${user.id} already exists.`);
@@ -24,14 +24,14 @@ export class UserLocalService {
   }
 
   // Get a user by ID
-  getUser(id) {
+  get(id) {
     const userKey = `user_${id}`;
     const user = localStorage.getItem(userKey);  // Retrieve as a string
     return user ? user : null;  // Return user details or null if not found
   }
 
   // Update a user by ID
-  updateUser(id, updatedUser) {
+  update(id, updatedUser) {
     const userKey = `user_${id}`;
     if (!localStorage.getItem(userKey)) {
       console.log(`User with ID ${id} does not exist.`);
@@ -44,7 +44,7 @@ export class UserLocalService {
   }
 
   // Delete a user by ID
-  deleteUser(id) {
+  delete(id) {
     const userKey = `user_${id}`;
     if (!localStorage.getItem(userKey)) {
       console.log(`User with ID ${id} does not exist.`);
@@ -57,7 +57,7 @@ export class UserLocalService {
   }
 
   // List all users (based on localStorage keys)
-  listUsers() {
+  list() {
     let users = [];
     // Loop through all keys in localStorage
     for (let i = 0; i < localStorage.length; i++) {
@@ -77,23 +77,23 @@ const userService = new UserLocalService();
 // Add a user
 console.log("Add user");
 const user = { id: '1', name: 'John Doe', email: 'john@example.com', cargo: 'Developer' };
-userService.addUser(user);
+userService.add(user);
 
 // Get the list of users
 console.log("Get list of users");
-const usersList = userService.listUsers();
+const usersList = userService.list();
 console.log("User list: ", usersList);
 
 // Get a specific user by ID
 console.log("Get user by ID");
-const specificUser = userService.getUser('1');
+const specificUser = userService.get('1');
 console.log("User with ID 1: ", specificUser);
 
 // Update the user
 console.log("Update user");
 const updatedUser = { id: '1', name: 'John Doe', email: 'john.doe@example.com', cargo: 'Senior Developer' };
-userService.updateUser('1', updatedUser);
+userService.update('1', updatedUser);
 
 // Delete the user
 console.log("Delete user");
-userService.deleteUser('1');
+userService.delete('1');

@@ -1,5 +1,7 @@
 import { editWebformView } from '../views/editWebFormView.js';
 import { returnNewSubmission } from './controllerUtil.js';
+import { rfpService } from '../model/persistance/set.js';
+import { Rfp } from '../model/models/rfp.js';
 
 export function editWebFormController() {
   editForm();
@@ -44,7 +46,9 @@ function editForm() {
 
     if (editIndex !== null) {
       submissions[editIndex] = { ...submissions[editIndex], ...submission };
-      localStorage.setItem("submissions", JSON.stringify(submissions));
+      //localStorage.setItem("submissions", JSON.stringify(submissions));
+      let newRfp = new Rfp().setDescription(submission.summary).setTitle(submission.projectName);
+      rfpService.addRfp(newRfp);
       localStorage.removeItem("editIndex");
 
       alert("Submissão atualizada com sucesso!");

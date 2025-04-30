@@ -9,7 +9,7 @@ console.log("responseLocalService");
   }
 
   // Add a new response
-  addResponse(response) {
+  add(response) {
     const responseKey = `response_${response.id}`;  // Use response ID as the key
     if (localStorage.getItem(responseKey)) {
       console.log(`Response with ID ${response.id} already exists.`);
@@ -22,14 +22,14 @@ console.log("responseLocalService");
   }
 
   // Get a response by ID
-  getResponse(id) {
+  get(id) {
     const responseKey = `response_${id}`;
     const response = localStorage.getItem(responseKey);  // Retrieve as a string
     return response ? response : null;  // Return response details or null if not found
   }
 
   // Update a response by ID
-  updateResponse(id, updatedResponse) {
+  update(id, updatedResponse) {
     const responseKey = `response_${id}`;
     if (!localStorage.getItem(responseKey)) {
       console.log(`Response with ID ${id} does not exist.`);
@@ -42,7 +42,7 @@ console.log("responseLocalService");
   }
 
   // Delete a response by ID
-  deleteResponse(id) {
+  delete(id) {
     const responseKey = `response_${id}`;
     if (!localStorage.getItem(responseKey)) {
       console.log(`Response with ID ${id} does not exist.`);
@@ -55,7 +55,7 @@ console.log("responseLocalService");
   }
 
   // List all responses (based on localStorage keys)
-  listResponses() {
+  list() {
     let responses = [];
     // Loop through all keys in localStorage
     for (let i = 0; i < localStorage.length; i++) {
@@ -70,28 +70,28 @@ console.log("responseLocalService");
 
 // Example usage:
 console.log("Starting tests");
-const responseServiceInstance = new responseLocalService();
+const responseServiceInstance = new ResponseLocalService();
 
 // Add a response
 console.log("Add response");
 const response = { id: '1', userId: '1', rfpId: '1', answer: 'This is my response to the RFP.' };
-responseServiceInstance.addResponse(response);
+responseServiceInstance.add(response);
 
 // Get the list of responses
 console.log("Get list of responses");
-const responsesList = responseServiceInstance.listResponses();
+const responsesList = responseServiceInstance.list();
 console.log("Response list: ", responsesList);
 
 // Get a specific response by ID
 console.log("Get response by ID");
-const specificResponse = responseServiceInstance.getResponse('1');
+const specificResponse = responseServiceInstance.get('1');
 console.log("Response with ID 1: ", specificResponse);
 
 // Update the response
 console.log("Update response");
 const updatedResponse = { id: '1', userId: '1', rfpId: '1', answer: 'This is my updated response to the RFP.' };
-responseServiceInstance.updateResponse('1', updatedResponse);
+responseServiceInstance.update('1', updatedResponse);
 
 // Delete the response
 console.log("Delete response");
-responseServiceInstance.deleteResponse('1');
+responseServiceInstance.delete('1');

@@ -9,7 +9,7 @@ export class RfpLocalService {
   }
 
   // Add a new RFP
-  addRfp(rfp) {
+  add(rfp) {
     const rfpKey = `rfp_${rfp.id}`;  // Use RFP ID as the key
     if (localStorage.getItem(rfpKey)) {
       console.log(`RFP with ID ${rfp.id} already exists.`);
@@ -22,14 +22,14 @@ export class RfpLocalService {
   }
 
   // Get an RFP by ID
-  getRfp(id) {
+  get(id) {
     const rfpKey = `rfp_${id}`;
     const rfp = localStorage.getItem(rfpKey);  // Retrieve as a string
     return rfp ? rfp : null;  // Return RFP details or null if not found
   }
 
   // Update an RFP by ID
-  updateRfp(id, updatedRfp) {
+  update(id, updatedRfp) {
     const rfpKey = `rfp_${id}`;
     if (!localStorage.getItem(rfpKey)) {
       console.log(`RFP with ID ${id} does not exist.`);
@@ -42,7 +42,7 @@ export class RfpLocalService {
   }
 
   // Delete an RFP by ID
-  deleteRfp(id) {
+  delete(id) {
     const rfpKey = `rfp_${id}`;
     if (!localStorage.getItem(rfpKey)) {
       console.log(`RFP with ID ${id} does not exist.`);
@@ -55,7 +55,7 @@ export class RfpLocalService {
   }
 
   // List all RFPs (based on localStorage keys)
-  listRfps() {
+  list() {
     let rfps = [];
     // Loop through all keys in localStorage
     for (let i = 0; i < localStorage.length; i++) {
@@ -70,28 +70,28 @@ export class RfpLocalService {
 
 // Example usage:
 console.log("Starting tests");
-const rfpServiceInstance = new rfpLocalService();
+const rfpServiceInstance = new RfpLocalService();
 
 // Add an RFP
 console.log("Add RFP");
 const rfp = { id: '1', title: 'New Project', description: 'Description of the new project', date: '2025-04-30' };
-rfpServiceInstance.addRfp(rfp);
+rfpServiceInstance.add(rfp);
 
 // Get the list of RFPs
 console.log("Get list of RFPs");
-const rfpsList = rfpServiceInstance.listRfps();
+const rfpsList = rfpServiceInstance.list();
 console.log("RFP list: ", rfpsList);
 
 // Get a specific RFP by ID
 console.log("Get RFP by ID");
-const specificRfp = rfpServiceInstance.getRfp('1');
+const specificRfp = rfpServiceInstance.get('1');
 console.log("RFP with ID 1: ", specificRfp);
 
 // Update the RFP
 console.log("Update RFP");
 const updatedRfp = { id: '1', title: 'Updated Project', description: 'Updated description of the project', date: '2025-05-01' };
-rfpServiceInstance.updateRfp('1', updatedRfp);
+rfpServiceInstance.update('1', updatedRfp);
 
 // Delete the RFP
 console.log("Delete RFP");
-rfpServiceInstance.deleteRfp('1');
+rfpServiceInstance.delete('1');

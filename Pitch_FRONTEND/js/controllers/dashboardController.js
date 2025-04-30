@@ -11,9 +11,10 @@ function loadDashboardData() {
   const storedSubmissions = JSON.parse(rfpService.list()) || [];
   const tbody = document.getElementById("dashboard-body");
 
-  tbody.innerHTML = storedSubmissions.map((item, index) => `
-    <tr data-index="${index}">
-      <td>${index + 1}</td>
+  // todo: 
+  tbody.innerHTML = storedSubmissions.map((item) => `
+    <tr data-index="${item.id}">
+      <td>${index + 1}</td> 
       <td class="project-name" style="cursor:pointer;">${item.projectName}</td>
       <td>${item.status}</td>
       <td><button onclick="review(${index})">Review Proposal</button></td>
