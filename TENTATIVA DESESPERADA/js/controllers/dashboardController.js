@@ -15,11 +15,12 @@ function loadDashboardData() {
 
   tbody.innerHTML = storedSubmissions.map((item, index) => {
     console.log("Item:", item); // Log the current item
+    console.log("Item.id: " + item.id);
     console.log("Index:", index); // Log the current index
     
     // Corrigir o retorno da template literal com parênteses
     return `
-      <tr data-id="${item.id}">
+      <tr data-id="${index.id}">
         <td>${index + 1}</td>
         <td class="project-name" style="cursor:pointer; color:var(--accent-orange); font-weight:bold;">
           ${item.projectName || "No Name"}
@@ -97,6 +98,7 @@ function showSubmissionDetails(id) {
 window.editForm = function(id) {
   console.log("id: " + id);
   localStorage.setItem("editingId", id); // replaces index with ID
+  console.log("editingId: " + localStorage.getItem("editingId"));
   window.location.hash = "#/webform";
   window.dispatchEvent(new PopStateEvent("popstate"));
 };

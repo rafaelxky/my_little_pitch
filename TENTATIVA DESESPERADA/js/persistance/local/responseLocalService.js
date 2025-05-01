@@ -16,9 +16,8 @@ export class ResponseLocalService {
       return false;
     }
 
-    // Save the response as a string (raw string format, no JSON.stringify)
-    const responseString = `UserID: ${response.userId}, RFPID: ${response.rfpId}, Answer: ${response.answer}`;
-    localStorage.setItem(responseKey, responseString);
+    // Save the response as a JSON string
+    localStorage.setItem(responseKey, JSON.stringify(response));
 
     // Update master ID list
     const allIds = localStorage.getItem('response_ids') ? localStorage.getItem('response_ids').split(',') : [];
@@ -33,8 +32,14 @@ export class ResponseLocalService {
   get(id) {
     const responseKey = `response_${id}`;
     const response = localStorage.getItem(responseKey);  // Retrieve as a string
-    console.log(response ? response : null);
-    return response ? response : null;  // Return raw string data or null if not found
+
+    // Convert the response from string back to JSON object
+    if (response) {
+      return JSON.parse(response);  // Now it's an object
+    }
+
+    console.log("Response not found.");
+    return null;  // Return null if not found
   }
 
   // Update a response by ID
@@ -45,9 +50,8 @@ export class ResponseLocalService {
       return false;
     }
 
-    // Update response data as a string (no JSON involved)
-    const updatedResponseString = `UserID: ${updatedResponse.userId}, RFPID: ${updatedResponse.rfpId}, Answer: ${updatedResponse.answer}`;
-    localStorage.setItem(responseKey, updatedResponseString);
+    // Update response data as JSON
+    localStorage.setItem(responseKey, JSON.stringify(updatedResponse));
 
     console.log(`Response with ID ${id} updated successfully.`);
     return true;
@@ -85,11 +89,11 @@ export class ResponseLocalService {
 
       if (key && key.startsWith("response_")) {  // Check for response keys
         const response = localStorage.getItem(key);  // Get the response data as a string
-        responses.push(response);  // Push the raw string into the array
+        responses.push(JSON.parse(response));  // Parse the string into an object and add to the list
       }
     }
 
     console.log("Returning responses: ", responses);
-    return responses;  // Return array of raw response strings
+    return responses;  // Return array of objects
   }
 }

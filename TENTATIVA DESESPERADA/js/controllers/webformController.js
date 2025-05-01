@@ -36,6 +36,8 @@ export function webformController() {
       document.getElementById('email').value = submission.email;
       document.getElementById('projectName').value = submission.projectName;
       document.getElementById('summary').value = submission.summary;
+
+      console.log("Inside Webform Controller: " + submission)
       
 
       charCount.textContent = `${maxChars - (submission.summary?.length || 0)} characters remaining`;
