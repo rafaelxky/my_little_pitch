@@ -15,7 +15,7 @@ export class RfpApiService {
     }
   }
 
-  // Obter um RFP por ID
+  // Obter um RFP por ID.
   async get(id) {
     try {
       const res = await fetch(`${this.baseUrl}/${id}`);
