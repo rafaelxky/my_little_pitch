@@ -11,7 +11,8 @@ function loadDashboardData() {
   const storedSubmissions = JSON.parse(rfpService.list()) || [];
   const tbody = document.getElementById("dashboard-body");
 
-  // todo: 
+  // todo: finish this
+  // take data from the rfpService.list and add it to the html
   tbody.innerHTML = storedSubmissions.map((item) => `
     <tr data-index="${item.id}">
       <td>${index + 1}</td> 
