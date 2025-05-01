@@ -20,10 +20,10 @@ function loadDashboardData() {
     
     // Corrigir o retorno da template literal com parênteses
     return `
-      <tr data-id="${index.id}">
-        <td>${index + 1}</td>
+      <tr data-id="${item.id}">
+        <td>${item.id}</td>
         <td class="project-name" style="cursor:pointer; color:var(--accent-orange); font-weight:bold;">
-          ${item.projectName || "No Name"}
+          ${item.name|| "No Name"}
         </td>
         <td>${item.status || "Pending"}</td>
         <td>

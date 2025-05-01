@@ -87,8 +87,10 @@ export class ResponseLocalService {
       const key = localStorage.key(i); // Get the current key
       console.log("list id: " + i + " - data - " + key);
 
-      if (key && key.startsWith("response_")) {  // Check for response keys
+      if (key && key.startsWith("response_") && key !== "response_ids") {  // Check for response keys
         const response = localStorage.getItem(key);  // Get the response data as a string
+        console.log("response: ", response)
+        console.log("response key: ", key)
         responses.push(JSON.parse(response));  // Parse the string into an object and add to the list
       }
     }
