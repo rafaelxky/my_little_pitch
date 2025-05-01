@@ -27,33 +27,12 @@ function loadDashboardData() {
         </td>
         <td>${item.status || "Pending"}</td>
         <td>
-          <button class="review-btn" data-id="${item.id}">Review Proposal</button>
+          <button class="review-btn" id="review" onClick="review('${item.id}')" >Review Proposal</button>
         </td>
       </tr>
     `;
   }).join('');
 
-  attachEventListeners();
-}
-
-function attachEventListeners() {
-  document.querySelectorAll(".project-name").forEach(cell => {
-    cell.addEventListener("click", () => {
-      const row = cell.closest("tr");
-      document.querySelectorAll("tr[data-id]").forEach(r => r.classList.remove("active-row"));
-      row.classList.add("active-row");
-
-      const id = row.getAttribute("data-id");
-      showSubmissionDetails(id);
-    });
-  });
-
-  document.querySelectorAll(".review-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const id = btn.getAttribute("data-id");
-      review(id);
-    });
-  });
 }
 
 function showSubmissionDetails(id) {
@@ -106,7 +85,8 @@ window.editForm = function(id) {
 
 // Makes review globally available
 window.review = function(id) {
-  localStorage.setItem("reviewId", id);
+  console.log("review func: " + id);
+  localStorage.setItem("editingId", id);
   window.location.hash = "#/proposal";
   window.dispatchEvent(new PopStateEvent("popstate"));
 };

@@ -7,9 +7,47 @@ import jakarta.persistence.*;
 @Table(name = "responses")
 public class Response extends AbstractModel{
 
+        // the id is already in the superclass
         private String rating;
         private String response;
         private Integer userId;
+        private Integer rfpId;
+        private String title;
+        private String feedBack;
+        private String tokens;
+
+
+    public Integer getRfpId() {
+        return rfpId;
+    }
+
+    public void setRfpId(Integer rfpId) {
+        this.rfpId = rfpId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getFeedBack() {
+        return feedBack;
+    }
+
+    public void setFeedBack(String feedBack) {
+        this.feedBack = feedBack;
+    }
+
+    public String getTokens() {
+        return tokens;
+    }
+
+    public void setTokens(String tokens) {
+        this.tokens = tokens;
+    }
 
     public Integer getUserId() {
         return userId;

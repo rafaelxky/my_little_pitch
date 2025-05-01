@@ -47,7 +47,7 @@ public class ApiController{
         return responseService.getByUserId(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = {"/user/add"})
+    @PostMapping(path = {"/user/add"})
     public User addUser(@Valid @ModelAttribute("user") User user){
 
         if (user.getId() != null && userService.get(user.getId()) != null) {

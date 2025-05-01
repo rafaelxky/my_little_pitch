@@ -3,7 +3,9 @@ import { ResponseLocalService } from '../persistance/local/responseLocalService.
 
 const responseService = new ResponseLocalService();
 
-export function proposalController(id) {
+export function proposalController() {
+  let id = localStorage.getItem("editingId");
+  console.log("proposal id: " + id);
   // Recupera a submissão específica pelo ID
   const submission = responseService.get(id);
 

@@ -8,9 +8,21 @@ import jakarta.persistence.*;
 public class User extends AbstractModel{
 
 
+    // the id is already in the superclass
     private String name;
     private String email;
 
+    private String passWord;
+
+
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
 
     public String getName() {
         return name;
