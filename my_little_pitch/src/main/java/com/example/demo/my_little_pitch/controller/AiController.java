@@ -1,6 +1,7 @@
 package com.example.demo.my_little_pitch.controller;
 
 import com.example.demo.my_little_pitch.command.QuestionDto;
+import com.example.demo.my_little_pitch.command.RfpRequestDto;
 import com.example.demo.my_little_pitch.persistance.model.User;
 import com.example.demo.my_little_pitch.services.UserService;
 import com.example.demo.my_little_pitch.services.AiService;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/ai")
-public class AiController {
+public class     AiController {
 
     private AiService aiService;
     private UserService userService;
@@ -39,26 +40,13 @@ public class AiController {
         return new ResponseEntity<>(aiService.answerQuestion(request.question()).getOutput().getContent(), HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/user/{cid}")
-    public ResponseEntity<String> customer(@Valid @RequestBody String question, BindingResult bindingResult, @PathVariable Integer cid) {
-
-
-        if (bindingResult.hasErrors()) {
+    @RequestMapping(method = RequestMethod.POST, path = "/rfp-response")
+    public ResponseEntity<String> generateRfpResponse(@Valid @RequestBody RfpRequestDto request, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        User user = userService.get(cid);
-        System.out.println(user + " asdf");
-
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        System.out.println("Cenoura");
-
-        return new ResponseEntity<>(aiService.respondToRfp(question, user).getOutput().getContent(),HttpStatus.OK);
-
+        return new ResponseEntity<>(aiService.info(request.question()).getOutput().getContent(), HttpStatus.OK);
     }
-
 }
 

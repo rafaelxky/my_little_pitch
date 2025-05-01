@@ -16,5 +16,9 @@ public interface AiService {
 
     Generation info(String question);
 
+    Generation rfp_response(String rfp);
+
     Generation answerQuestion(String Question);
+
+    Generation answerRfp(String rfp);
 }

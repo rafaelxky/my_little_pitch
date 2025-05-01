@@ -39,4 +39,8 @@
         <constructor-arg ref="embeddingClient"/>
     </bean>
 
+    <bean id="vectorStore" class="com.example.demo.my_little_pitch.persistance.VectorStore"
+          init-method="init">
+        <property name="simpleVectorStore" ref="simpleVectorStore"/>
+    </bean>
 </beans>

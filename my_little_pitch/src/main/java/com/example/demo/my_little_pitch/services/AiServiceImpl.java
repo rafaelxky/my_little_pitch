@@ -19,9 +19,8 @@ public class AiServiceImpl implements AiService {
 
     private final ChatClient chatClient;
 
-
+    @Value("${ai.rag_prompt_template}")
     private Resource ragPromptTemplate;
-
 
     private Resource functionPromptTemplate;
 
@@ -51,6 +50,7 @@ public class AiServiceImpl implements AiService {
         List<String> contentList = vectorStore.search(question);
 
         PromptTemplate promptTemplate = new PromptTemplate(ragPromptTemplate);
+        System.out.println(promptTemplate);
         Prompt prompt = promptTemplate.create(Map.of(
                 "input", question,
                 "documents", String.join("\n", contentList)));
@@ -59,7 +59,24 @@ public class AiServiceImpl implements AiService {
     }
 
     @Override
+    public Generation rfp_response(String rfp) {
+
+        List<String> contentList = vectorStore.search(rfp);
+
+        PromptTemplate promptTemplate = new PromptTemplate(ragPromptTemplate);
+        Prompt prompt = promptTemplate.create(Map.of(
+                "input", rfp));
+
+        return chatClient.call(prompt).getResult();
+    }
+
+    @Override
     public Generation answerQuestion(String question) {
         return chatClient.call(new Prompt(question)).getResult();
+    }
+
+    @Override
+    public Generation answerRfp(String rfp) {
+        return chatClient.call(new Prompt(rfp)).getResult();
     }
 }
