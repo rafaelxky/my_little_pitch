@@ -3,16 +3,6 @@ import { homeView } from '../views/homeView.js';
 export function homeController() {
   document.getElementById('app').innerHTML = homeView();
 
-  const carouselContainer = document.querySelector(".carousel-container");
-  const slides = document.querySelectorAll(".slide");
-  let currentSlide = 0;
-
-  function changeSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    const offset = -currentSlide * 100;
-    carouselContainer.style.transform = `translateX(${offset}vw)`;
-  }
-
   setInterval(changeSlide, 5000);
 
   // Slide click - mostrar info (exemplo básico)

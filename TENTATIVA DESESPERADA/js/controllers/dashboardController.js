@@ -20,7 +20,7 @@ function loadDashboardData() {
     
     // Corrigir o retorno da template literal com parênteses
     return `
-      <tr data-id="${item.id}">
+      <tr onClick="showSubmissionDetails('${item.id}')"}">
         <td>${item.id}</td>
         <td class="project-name" style="cursor:pointer; color:var(--accent-orange); font-weight:bold;">
           ${item.name|| "No Name"}
@@ -32,10 +32,10 @@ function loadDashboardData() {
       </tr>
     `;
   }).join('');
-
 }
 
-function showSubmissionDetails(id) {
+window.showSubmissionDetails = function(id) {
+  console.log("Showing submission details")
   const submission = responseService.get(id);
   console.log("submission" + submission);
   const container = document.getElementById("submission-details");
