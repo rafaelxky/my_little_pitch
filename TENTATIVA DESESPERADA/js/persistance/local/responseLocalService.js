@@ -44,6 +44,9 @@ export class ResponseLocalService {
 
   // Update a response by ID
   update(id, updatedResponse) {
+    updatedResponse.id = id;
+    console.log("updating: ", updatedResponse)
+    console.log("updating id: " + id);
     const responseKey = `response_${id}`;
     if (!localStorage.getItem(responseKey)) {
       console.log(`Response with ID ${id} does not exist.`);

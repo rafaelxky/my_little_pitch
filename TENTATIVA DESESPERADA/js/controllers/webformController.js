@@ -82,6 +82,7 @@ export function returnNewSubmission(){
   .setSummary(returnValue('summary'))
   .setFileName(returnValue('file'))
   .setStatus('pending')
+  .setEmail(returnValue('email'))
   ;  
 }
 

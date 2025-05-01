@@ -11,6 +11,12 @@ export class Submission {
         this.fileName = "";
         this.status = "";
         this.id = "";
+        this.email = "";
+    }
+
+    setEmail(email){
+        this.email = email;
+        return this;
     }
 
     setName(name) {

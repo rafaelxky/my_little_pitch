@@ -74,6 +74,7 @@ function showSubmissionDetails(id) {
       <p><strong>Sector:</strong> ${submission.sector}</p>
       <p><strong>Role:</strong> ${submission.role}</p>
       <p><strong>Project Name:</strong> ${submission.projectName}</p>
+      <p><strong>Email:</strong> ${submission.email}</p>
       <p><strong>Summary:</strong> ${submission.summary}</p>
       <p><strong>File:</strong> ${submission.fileName || "None"}</p>
       <div class="submission-actions">
