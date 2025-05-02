@@ -105,7 +105,19 @@ public class AiController {
         }
 
         // Compose the question for the AI
-        String question = rfp.getText() + " - based on this information generate a response to this RFP, dont add any placeholders or things for me to change, just make stuff up. dont make the text too long. Dont add any [] or ** specifically";
+        String question = rfp.getText() + " You are an AI proposal writer that generates responses to RFP (Request for Proposal) documents.\n" +
+                "Your goal is to write a clear, relevant, and customized response that fits the RFP requirements and the chosen tone of voice.\n" +
+                "You should adapt the tone of language to the role of the person who made the RFP request and the activity field of the request.\n" +
+                "Use the information from the RFP section to adjust the tone of the answer.\n" +
+                "\n" +
+                "\n" +
+                "YOUR TASK:\n" +
+                "Generate a proposal summary that:\n" +
+                "- Introduces the company briefly\n" +
+                "- Outlines the proposed solution with respect to the RFP scope and objectives\n" +
+                "- Matches the tone defined above\n" +
+                "- Highlights key technologies, experience, and timeline\n" +
+                "- Ends with a short, confident closing paragraph";
 
         // Dummy user (in a real app, this should come from the logged-in user)
         User user = new User();

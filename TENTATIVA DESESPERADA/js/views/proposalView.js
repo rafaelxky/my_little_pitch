@@ -30,11 +30,14 @@ export function proposalView(proposalData, finalConsiderations) {
       <!-- Card com as considerações finais -->
       <div class="final-considerations">
         <div class="feedback">
-          <h5 id="feedback-title">Final Considerations</h5>
-          <p id="feedback-text">${finalConsiderations}</p>
+          <h5 id="feedback-title">Final Step</h5>
           <!-- Botões para aceitar e baixar ou rejeitar a proposta -->
-          <button class="btn btn-primary" id="download-btn">Accept and Download</button>
-          <button class="btn btn-danger" id="reject-btn">Reject Proposal</button>
+
+              <div class="buttons-container">
+  <button class="proposal-buttons" id="download-btn">Accept and Download</button>
+  <button class="proposal-buttons" id="reject-btn">Reject Proposal</button>
+</div>
+
         </div>
       </div>
     </section>

@@ -93,7 +93,7 @@ function returnNewSubmission(){
   .setProjectName(returnValue('projectName'))
   .setSummary(returnValue('summary'))
   .setFileName(returnValue('file'))
-  .setStatus('pending')
+  .setStatus('done!')
   .setEmail(returnValue('email'))
   ;  
 
