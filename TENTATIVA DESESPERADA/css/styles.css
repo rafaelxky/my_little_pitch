@@ -1,0 +1,667 @@
+:root {
+  --flip-pink: #D946EF;      /* Rosa vibrante */
+  --flip-purple: #8B5CF6;    /* Roxo suave */
+  --flip-blue: #3B82F6;      /* Azul moderno */
+  --pure-white: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.15);
+}
+
+
+/* Garantir que html e body ocupem toda a altura */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Remove rolagem */
+}
+
+/* Definir a imagem de fundo na tag html */
+html {
+  background-image: url('/assets/fundo_html.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+/* Definir o mesmo fundo no body, para garantir que a imagem de fundo não seja substituída */
+body {
+  background-image: url('/assets/fundo_html.jpg'); /* Ajuste o caminho conforme necessário */
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100%; /* Garante que o body cubra toda a altura */
+  color: white; /* Cor do texto (caso seja necessário) */
+
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Garante que os itens da navbar fiquem centralizados verticalmente */
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  padding: 30px 75px; /* Reduzindo o padding superior (30px) */
+}
+
+.nav-left .logo {
+  max-height: 50px;
+  max-width: 100%;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 30px 75px; /* Reduzindo o padding superior (30px) */
+  
+}
+
+.nav-right a {
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: bold;
+
+}
+
+.nav-right a:hover {
+  transform: scale(1.05);
+}
+
+/* Estilo do Botão */
+.button-64 {
+  align-items: center;
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 16px; /* Ajuste do tamanho da fonte para melhor encaixar */
+  justify-content: center;
+  line-height: 1em;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button-64:active,
+.button-64:hover {
+  outline: 0;
+}
+
+.button-64 span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+
+  display: flex;
+  align-items: center;    /* Centraliza verticalmente */
+  justify-content: center;/* Centraliza horizontalmente */
+  text-align: center;
+}
+
+.button-64:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .button-64 {
+    font-size: 18px; /* Ajuste do tamanho da fonte para telas maiores */
+    min-width: 196px;
+  }
+}
+
+
+/* Footer */
+.site-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 15px; /* Menos padding para tornar o footer mais compacto */
+  font-size: 0.7rem;  /* Font menor para reduzir a altura do footer */
+  font-family: 'Orbitron', sans-serif;
+  display: flex;  
+  justify-content: space-between; /* Alinha os itens à esquerda e à direita */
+  box-sizing: border-box; /* Certifica-se de que o padding e bordas não afetam a largura total */
+  overflow: hidden; /* Impede que o conteúdo saia da tela */
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  flex-grow: 0; /* Impede que os itens cresçam além do necessário */
+  text-align: center;
+  margin: 5px 0;  /* Menos margem entre os itens */
+  color: white;
+  padding: 0; /* Remover padding extra que pode afetar a largura */
+  box-sizing: border-box;
+}
+
+.footer-left {
+  text-align: left;
+}
+
+.footer-center {
+  text-align: center;
+}
+
+.footer-right {
+  text-align: right;
+  padding: 0;  /* Remover padding extra */
+}
+
+/* Ajuste para quando a tela for muito pequena (ex: mobile) */
+@media (max-width: 768px) {
+  .site-footer {
+    flex-direction: column; /* Organiza os itens em coluna para telas pequenas */
+    align-items: center; /* Centraliza os itens */
+  }
+
+  .footer-left, .footer-center, .footer-right {
+    flex: 1 1 100%;  /* Faz com que cada item ocupe a largura total em telas menores */
+    text-align: center;
+    padding: 0 10px;
+  }
+}
+
+
+
+/* Carrossel */
+.carousel {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 100px 40px 40px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Container de Cards */
+.cards-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Estilo básico para o cartão */
+.card {
+  width: 450px;
+  height: 600px;
+  perspective: 1000px; /* Para criar um efeito 3D */
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+/* FLIP quando expandido */
+.card.flipCard .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  font-family: 'Orbitron', sans-serif;
+}
+
+.card-front {
+  background-color: #b019ca2b;
+  z-index: 2;
+  font-size: 22px;
+}
+
+.card-back {
+  background-color: #540b3d1c;
+  transform: rotateY(180deg);
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* Centraliza horizontalmente */
+  justify-content: center;  /* Centraliza verticalmente */
+  padding: 20px;            /* Espaço de borda interno */
+  text-align: center;
+  box-sizing: border-box; /* Impede a expansão do card */
+}
+
+
+
+/* Bordas de animação */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  border: 4px solid #880bb9;
+  z-index: -1;
+  animation: border-animation 3s linear infinite;
+}
+
+@keyframes border-animation {
+  0% {
+    border-top: 4px solid #880bb9;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid transparent;
+  }
+  25% {
+    border-top: 4px solid transparent;
+    border-right: 4px solid #880bb9;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid transparent;
+  }
+  50% {
+    border-top: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid #880bb9;
+    border-left: 4px solid transparent;
+  }
+  75% {
+    border-top: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid #880bb9;
+  }
+  100% {
+    border-top: 4px solid #880bb9;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid transparent;
+  }
+}
+
+
+/* WEBFORM */
+.webform {
+  max-width: 600px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #540b3d7f;
+  border-radius: 8px;
+  box-shadow: 0 8px 15px var(--shadow-color);
+}
+
+.webform label {
+  margin-top: 10px;
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+  color: white;  /* Cor rosa para os labels */
+}
+
+.webform input,
+.webform select,
+.webform textarea {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #540b3d7f;
+  border-radius: 5px;
+}
+
+/* Estilo de fundo para os campos de input/select/textarea */
+.webform input,
+.webform select,
+.webform textarea {
+  background-color: white; /* Azul claro para os campos */
+  color: black; 
+  font-family: 'Orbitron', sans-serif;
+}
+
+
+.webform button {
+  color: var(--pure-white);  /* Texto branco no botão */
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  background: linear-gradient(
+    45deg,
+    #002bff,
+    #7a00ff,
+    #ff00c8
+  );
+}
+  
+.webform button:hover {
+  background: linear-gradient(
+    45deg,
+    #480293,
+    #87016a,
+    #6e0000
+  );
+}
+
+
+/* Project Brief */
+.brief-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  position: relative;
+}
+
+#summary::placeholder {
+  color: #aaa; /* Cinza claro para o placeholder */
+  font-style: italic;
+  font-family: 'Orbitron', sans-serif;
+}
+
+#char-count {
+  font-size: 0.85rem;
+  color: white;  /* Azul para o contador de caracteres */
+  align-self: flex-end;
+  margin-top: 5px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+
+ 
+/* Dashboard */
+.dashboard-table {
+  width: 90%;
+  max-width: 800px;
+  margin: 30px auto;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 8px 15px var(--shadow-color);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'Orbitron', sans-serif;
+  color: black;
+}
+.dashboard-table th {
+  background-color: #540b3ded;
+  color: white;
+  font-weight: bold;
+}
+.dashboard-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  color: black;
+}
+.dashboard-table button { 
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(45deg, #002bff, #7a00ff);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.dashboard-table button:hover {
+  background: linear-gradient(45deg, #87016a, #6e0000);
+}
+.active-row {
+  background-color: #a5a6af;
+}
+
+/* DASHBOAED */
+.dashboard-table {
+  width: 90%;
+  max-width: 800px;
+  margin: 30px auto;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 8px 15px var(--shadow-color);
+  border-radius: 8px;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--shadow-color);
+}
+
+.dashboard-table th {
+  background-color: #270b3cd3;
+  color: var(--pure-white);
+  font-family: 'Orbitron', sans-serif;
+}
+
+.dashboard-table button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  color: var(--pure-white);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.active-row{
+  background-color: #94b99d;
+}
+
+.submission-details {
+  margin-top: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.submission-card {
+  background: white;
+  padding: 1.5rem;
+  border: 1px solid var(--graphite-gray);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.submission-card p,
+.submission-card h3 {
+  margin: 0.5rem 0;
+  color: black;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.submission-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.submission-actions button {
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+}
+
+
+
+/* PROPOSAL REVIEW */
+.proposal-review {
+  padding: 20px;
+  background-color: #2d0234a7;;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+  max-width: 1000px;
+}
+.proposal-review h2 {
+  font-size: 2rem;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Orbitron', sans-serif;
+}
+.ai-proposal p {
+  font-size: 1.1rem;
+  color: #d4d4d4;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+
+/* Tabela */
+.response-box {
+  margin-bottom: 30px;
+}
+#proposal-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+#proposal-table th, #proposal-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-family: 'Orbitron', sans-serif; 
+}
+
+/* Estilo para a coluna Session Title */
+#proposal-table th {
+  background-color: #660064;  /* Matching the Dashboard color */
+  color: white;
+}
+#proposal-table td {
+  color: black;
+}
+
+/* Texto da coluna 'Session Title' em negrito */
+#proposal-table td:first-child {
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;  
+}
+
+/* Maior espaço entre as colunas */
+#proposal-table th, #proposal-table td {
+  padding-right: 30px;  /* Aumenta o espaço à direita de cada célula */
+}
+
+#proposal-table td:first-child {
+  padding-left: 30px;  /* Aumenta o espaço à esquerda da primeira coluna */
+}
+
+
+/* Card com as Considerações Finais */
+.final-considerations {
+  width: 100%;
+  max-width: 800px; /* Wider card for final considerations */
+  margin: 20px auto;
+  background-color: #180016a3;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.feedback {
+  padding: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f6dcf9; /* Matching the Dashboard color */
+  margin-bottom: 15px;
+  font-family: 'Orbitron', sans-serif; 
+}
+.feedback-text {
+  font-size: 1rem;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px; /* Adiciona espaço entre os botões */
+}
+
+.proposal-buttons {
+  width: 48%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+}
+
+#download-btn {
+  background-color: #0023e7;
+  color: white;
+}
+
+#download-btn:hover {
+  background-color: #8717ff;
+}
+
+#reject-btn {
+  background-color: #6e0000;
+  color: white;
+}
+
+#reject-btn:hover {
+  background-color:  #87016a;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+# Java build and class files
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven target directory
+/target/
+
+# Logs
+*.log
+
+# Eclipse
+.project
+.classpath
+.settings/
+*.launch
+
+# IntelliJ IDEA
+*.iml
+.idea/
+out/
+
+# VS Code
+.vscode/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+*.pem
+
+# Backup files
+*.bak
+*.swp
+*~
+
