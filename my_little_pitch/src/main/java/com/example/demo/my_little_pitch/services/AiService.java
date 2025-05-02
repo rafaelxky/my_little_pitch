@@ -21,4 +21,6 @@ public interface AiService {
     Generation answerQuestion(String Question);
 
     Generation answerRfp(String rfp);
+
+    Generation userInfo(User customer, String question);
 }

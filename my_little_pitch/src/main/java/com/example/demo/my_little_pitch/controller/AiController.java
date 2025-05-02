@@ -48,5 +48,31 @@ public class     AiController {
 
         return new ResponseEntity<>(aiService.info(request.question()).getOutput().getContent(), HttpStatus.OK);
     }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/user/{cid}")
+    public ResponseEntity<String> user(@RequestBody QuestionDto request, BindingResult bindingResult, @PathVariable Integer cid) {
+
+
+
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+
+        //User user = userService.get(cid);
+        String question = request.question();
+
+        User user = new User();
+        user.setEmail("dfdifjfd");
+        user.setId(1);
+        user.setName("Nandinho");
+
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(aiService.userInfo(user, question).getOutput().getContent(), HttpStatus.OK);
+
+    }
 }
 

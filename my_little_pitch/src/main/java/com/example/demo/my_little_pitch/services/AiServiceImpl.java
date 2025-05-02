@@ -1,11 +1,15 @@
 package com.example.demo.my_little_pitch.services;
 
+import com.example.demo.my_little_pitch.functions.UserInfoFunction;
 import com.example.demo.my_little_pitch.persistance.VectorStore;
 import com.example.demo.my_little_pitch.persistance.model.User;
 import org.springframework.ai.chat.ChatClient;
 import org.springframework.ai.chat.Generation;
+import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.ai.model.function.FunctionCallbackWrapper;
+import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -22,6 +26,7 @@ public class AiServiceImpl implements AiService {
     @Value("${ai.rag_prompt_template}")
     private Resource ragPromptTemplate;
 
+    @Value("${ai.function_prompt_template}")
     private Resource functionPromptTemplate;
 
     private VectorStore vectorStore;
@@ -79,4 +84,23 @@ public class AiServiceImpl implements AiService {
     public Generation answerRfp(String rfp) {
         return chatClient.call(new Prompt(rfp)).getResult();
     }
+
+    @Override
+    public Generation userInfo(User customer, String question) {
+        OpenAiChatOptions chatOptions = OpenAiChatOptions.builder()
+                .withFunctionCallbacks(List.of(
+                        FunctionCallbackWrapper.builder(new UserInfoFunction(customer))
+                                .withName("UserInfo")
+                                .withDescription("Get personal details for a user, such as id, name and email")
+                                .build()
+                )).build();
+
+        PromptTemplate promptTemplate = new PromptTemplate(functionPromptTemplate);
+        Message message = promptTemplate.createMessage(Map.of("input", question));
+        Prompt prompt = new Prompt(message, chatOptions);
+
+        return chatClient.call(prompt).getResult();
+    }
 }
+
+
